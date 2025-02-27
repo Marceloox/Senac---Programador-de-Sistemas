@@ -28,6 +28,20 @@ namespace Login
                 labelResultado.ForeColor = Color.Red;
                 return;
             }
+            else if (senha == null || senha == "")
+            {
+                labelResultado.Text = "Senha é obrigatorio!!!";
+                labelResultado.ForeColor = Color.Red;
+                return;
+            }
+
+          /*else
+            {
+                labelResultado.Text = "Usuario e Senha são obrigatorios!!!";
+                labelResultado.ForeColor = Color.Red;
+            }*/
+
+            
 
             if (usuario == "marcelo" && senha == "12345")
             {

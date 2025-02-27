@@ -40,14 +40,14 @@
             // 
             // textBoxUsuario
             // 
-            textBoxUsuario.Location = new Point(238, 184);
+            textBoxUsuario.Location = new Point(242, 203);
             textBoxUsuario.Name = "textBoxUsuario";
             textBoxUsuario.Size = new Size(182, 23);
             textBoxUsuario.TabIndex = 0;
             // 
             // textBoxSenha
             // 
-            textBoxSenha.Location = new Point(238, 245);
+            textBoxSenha.Location = new Point(242, 264);
             textBoxSenha.Name = "textBoxSenha";
             textBoxSenha.Size = new Size(182, 23);
             textBoxSenha.TabIndex = 1;
@@ -55,7 +55,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(172, 187);
+            label1.Location = new Point(176, 206);
             label1.Name = "label1";
             label1.Size = new Size(53, 15);
             label1.TabIndex = 2;
@@ -65,7 +65,7 @@
             // 
             label2.AutoSize = true;
             label2.BackColor = SystemColors.Control;
-            label2.Location = new Point(172, 248);
+            label2.Location = new Point(176, 267);
             label2.Name = "label2";
             label2.Size = new Size(45, 15);
             label2.TabIndex = 3;
@@ -74,7 +74,7 @@
             // Entrar
             // 
             Entrar.BackColor = Color.Transparent;
-            Entrar.Location = new Point(318, 321);
+            Entrar.Location = new Point(322, 340);
             Entrar.Name = "Entrar";
             Entrar.Size = new Size(92, 23);
             Entrar.TabIndex = 4;
@@ -86,7 +86,7 @@
             // 
             label3.AutoSize = true;
             label3.ForeColor = SystemColors.Highlight;
-            label3.Location = new Point(172, 325);
+            label3.Location = new Point(176, 344);
             label3.Name = "label3";
             label3.Size = new Size(105, 15);
             label3.TabIndex = 5;
@@ -97,7 +97,7 @@
             labelResultado.AutoSize = true;
             labelResultado.BackColor = Color.Transparent;
             labelResultado.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            labelResultado.Location = new Point(205, 377);
+            labelResultado.Location = new Point(209, 396);
             labelResultado.Name = "labelResultado";
             labelResultado.Size = new Size(20, 21);
             labelResultado.TabIndex = 6;
@@ -108,7 +108,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(610, 553);
+            ClientSize = new Size(610, 571);
             Controls.Add(labelResultado);
             Controls.Add(label3);
             Controls.Add(Entrar);
