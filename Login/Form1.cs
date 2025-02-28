@@ -12,6 +12,9 @@ namespace Login
 {
     public partial class Form1 : Form
     {
+        List<string> listaUsuarios = new List<string>() { "neymar.jr", "pablo.vitar", "sukuna.silva" };
+        List<string> listaSenhas = new List<string>() { "bruna", "12345", "777" };
+
         public Form1()
         {
             InitializeComponent();
@@ -19,12 +22,12 @@ namespace Login
 
         private void Entrar_Click(object sender, EventArgs e)
         {
-            string usuario = textBoxUsuario.Text;
+            string usuarioBuscado = textBoxUsuario.Text;
             string senha = textBoxSenha.Text;
 
-            if(usuario == null || usuario == "")
+            if(string.IsNullOrWhiteSpace(usuarioBuscado))
             {
-                labelResultado.Text = "Usuario é obrigatorio!!!";
+                labelResultado.Text = "Usuário é obrigatorio!!!";
                 labelResultado.ForeColor = Color.Red;
                 return;
             }
@@ -35,15 +38,25 @@ namespace Login
                 return;
             }
 
-          /*else
+            /*else
+              {
+                  labelResultado.Text = "Usuario e Senha são obrigatorios!!!";
+                  labelResultado.ForeColor = Color.Red;
+              }*/
+
+            int posicaoUsuarioEncontrado = -1;
+
+            for (int i = 0; i < listaUsuarios.Count; i++)
             {
-                labelResultado.Text = "Usuario e Senha são obrigatorios!!!";
-                labelResultado.ForeColor = Color.Red;
-            }*/
+                 if (usuarioBuscado == listaUsuarios[i])
+                {
+                    posicaoUsuarioEncontrado = i;
+                }
+            }
 
-            
 
-            if (usuario == "marcelo" && senha == "12345")
+
+            if (posicaoUsuarioEncontrado > -1 && senha == listaSenhas[posicaoUsuarioEncontrado])
             {
                 labelResultado.Text = "Autenticado com sucesso!";
                 labelResultado.ForeColor = Color.Green;
