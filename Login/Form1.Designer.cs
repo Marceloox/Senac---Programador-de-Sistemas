@@ -36,6 +36,14 @@
             Entrar = new Button();
             label3 = new Label();
             labelResultado = new Label();
+            label4 = new Label();
+            textBoxnovoUsuario = new TextBox();
+            textBoxnovaSenha = new TextBox();
+            label5 = new Label();
+            label6 = new Label();
+            label7 = new Label();
+            buttonCadastrar = new Button();
+            labelCadastro = new Label();
             SuspendLayout();
             // 
             // textBoxUsuario
@@ -103,12 +111,92 @@
             labelResultado.TabIndex = 6;
             labelResultado.Text = "- ";
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = SystemColors.Control;
+            label4.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(251, 89);
+            label4.Name = "label4";
+            label4.Size = new Size(94, 40);
+            label4.TabIndex = 7;
+            label4.Text = "Login";
+            // 
+            // textBoxnovoUsuario
+            // 
+            textBoxnovoUsuario.Location = new Point(861, 203);
+            textBoxnovoUsuario.Name = "textBoxnovoUsuario";
+            textBoxnovoUsuario.Size = new Size(139, 23);
+            textBoxnovoUsuario.TabIndex = 8;
+            // 
+            // textBoxnovaSenha
+            // 
+            textBoxnovaSenha.Location = new Point(861, 264);
+            textBoxnovaSenha.Name = "textBoxnovaSenha";
+            textBoxnovaSenha.Size = new Size(139, 23);
+            textBoxnovaSenha.TabIndex = 9;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(793, 206);
+            label5.Name = "label5";
+            label5.Size = new Size(50, 15);
+            label5.TabIndex = 10;
+            label5.Text = "Usuario:";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(801, 267);
+            label6.Name = "label6";
+            label6.Size = new Size(42, 15);
+            label6.TabIndex = 11;
+            label6.Text = "Senha:";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.Location = new Point(809, 89);
+            label7.Name = "label7";
+            label7.Size = new Size(203, 40);
+            label7.TabIndex = 12;
+            label7.Text = "Novo usuario";
+            // 
+            // buttonCadastrar
+            // 
+            buttonCadastrar.Location = new Point(870, 336);
+            buttonCadastrar.Name = "buttonCadastrar";
+            buttonCadastrar.Size = new Size(75, 23);
+            buttonCadastrar.TabIndex = 13;
+            buttonCadastrar.Text = "Cadastrar";
+            buttonCadastrar.UseVisualStyleBackColor = true;
+            // 
+            // labelCadastro
+            // 
+            labelCadastro.AutoSize = true;
+            labelCadastro.BackColor = Color.Transparent;
+            labelCadastro.Location = new Point(809, 402);
+            labelCadastro.Name = "labelCadastro";
+            labelCadastro.Size = new Size(12, 15);
+            labelCadastro.TabIndex = 14;
+            labelCadastro.Text = "-\r\n";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(1163, 571);
+            ClientSize = new Size(1177, 571);
+            Controls.Add(labelCadastro);
+            Controls.Add(buttonCadastrar);
+            Controls.Add(label7);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(textBoxnovaSenha);
+            Controls.Add(textBoxnovoUsuario);
+            Controls.Add(label4);
             Controls.Add(labelResultado);
             Controls.Add(label3);
             Controls.Add(Entrar);
@@ -131,5 +219,13 @@
         private Button Entrar;
         private Label label3;
         private Label labelResultado;
+        private Label label4;
+        private TextBox textBoxnovoUsuario;
+        private TextBox textBoxnovaSenha;
+        private Label label5;
+        private Label label6;
+        private Label label7;
+        private Button buttonCadastrar;
+        private Label labelCadastro;
     }
 }
