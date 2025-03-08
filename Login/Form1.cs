@@ -14,7 +14,7 @@ namespace Login
     public partial class Form1 : Form
     {
         List<string> listaUsuarios = new List<string>() { "neymar.jr", "pablo.vitar", "sukuna.silva" };
-        List<string> listaSenhas = new List<string>() { "bruna", "12345", "777" };
+        List<string> listaSenhas = new List<string>() { "Brun@123", "12345Abc!", "Sete7Sete!" };
 
         public Form1()
         {
@@ -73,7 +73,7 @@ namespace Login
         {
             string novoUsuario = textBoxnovoUsuario.Text;
             string novaSenha = textBoxnovaSenha.Text;
-            bool usuarioEncontrado = false;
+            /*bool usuarioEncontrado = false;
 
             for (int i = 0; i < listaUsuarios.Count; i++)
             {
@@ -94,23 +94,67 @@ namespace Login
             {
                 labelCadastro.Text = "Já existe um usuário cadastrado";
                 labelCadastro.ForeColor = Color.Red;
+            }*/
+
+            if (string.IsNullOrWhiteSpace(novoUsuario))
+            {
+                labelCadastro.Text = "Usuario eh obrigatorio!!!";
+                return;
             }
 
-            if (!Regex.IsMatch(novaSenha, @"[0-9]"))
-                labelCadastro.Text = "A senha deve conter pelo menos 1 número.";
+            if (string.IsNullOrWhiteSpace(novaSenha))
+            {
+                labelCadastro.Text = "Senha eh obrigatoria!!!";
+                return;
+            }
 
-            if (!Regex.IsMatch(novaSenha, @"[!@#$%^&*(),.?""{}|<>]"))
-                labelCadastro.Text = "A senha deve conter pelo menos 1 caractere especial.";
+            if (novaSenha.Length < 8)
+            {
+                labelCadastro.Text = "A senha deve ter pelo menos 8 caracteres";
+                return;
+            }
 
-            if (!Regex.IsMatch(novaSenha, @"[A-Z]"))
-                labelCadastro.Text = "A senha deve conter pelo menos 1 letra maiúscula.";
+            if (!novaSenha.Any(char.IsUpper))
+            {
+                labelCadastro.Text = "A senha deve ter pelo menos uma letra maiuscula";
+                return;
+            }
 
-            if (!Regex.IsMatch(novaSenha, @"[a-z]"))
-                labelCadastro.Text = "A senha deve conter pelo menos 1 letra minúscula.";
+            if (!novaSenha.Any(char.IsLower))
+            {
+                labelCadastro.Text = "A senha deve ter pelo menos uma letra minuscula";
+                return;
+            }
 
-            if (novaSenha.Contains(" "))
-               labelCadastro.Text =  "A senha não pode conter espaços.";
+            if (!novaSenha.Any(char.IsDigit))
+            {
+                labelCadastro.Text = "A senha deve ter pelo menos um numero";
+                return;
+            }
 
+            if (!novaSenha.Any(char.IsPunctuation) && !novaSenha.Any(char.IsSymbol) && !novaSenha.Contains('@'))
+            {
+                labelCadastro.Text = "A senha deve ter pelo menos um caracter especial";
+                return;
+            }
+
+            if (novaSenha.Contains(' '))
+            {
+                labelCadastro.Text = "A senha nao deve ter espacos em branco";
+                return;
+            }
+
+            if (listaUsuarios.Contains(novoUsuario))
+            {
+                labelCadastro.Text = "Já existe um usuário cadastrado";
+                return;
+            }
+
+            listaUsuarios.Add(novoUsuario);
+            listaSenhas.Add(novaSenha);
+            labelCadastro.Text = "Usuário cadastrado com sucesso!";
+            textBoxnovoUsuario.Clear();
+            textBoxnovaSenha.Clear();
         }
     }
 }
