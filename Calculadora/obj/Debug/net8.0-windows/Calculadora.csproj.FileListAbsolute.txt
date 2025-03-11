@@ -1,0 +1,17 @@
+D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\Calculadora\bin\Debug\net8.0-windows\Calculadora.exe
+D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\Calculadora\bin\Debug\net8.0-windows\Calculadora.deps.json
+D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\Calculadora\bin\Debug\net8.0-windows\Calculadora.runtimeconfig.json
+D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\Calculadora\bin\Debug\net8.0-windows\Calculadora.dll
+D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\Calculadora\bin\Debug\net8.0-windows\Calculadora.pdb
+D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\Calculadora\obj\Debug\net8.0-windows\Calculadora.Form1.resources
+D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\Calculadora\obj\Debug\net8.0-windows\Calculadora.csproj.GenerateResource.cache
+D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\Calculadora\obj\Debug\net8.0-windows\Calculadora.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\Calculadora\obj\Debug\net8.0-windows\Calculadora.AssemblyInfoInputs.cache
+D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\Calculadora\obj\Debug\net8.0-windows\Calculadora.AssemblyInfo.cs
+D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\Calculadora\obj\Debug\net8.0-windows\Calculadora.csproj.CoreCompileInputs.cache
+D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\Calculadora\obj\Debug\net8.0-windows\Calculadora.sourcelink.json
+D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\Calculadora\obj\Debug\net8.0-windows\Calculadora.dll
+D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\Calculadora\obj\Debug\net8.0-windows\refint\Calculadora.dll
+D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\Calculadora\obj\Debug\net8.0-windows\Calculadora.pdb
+D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\Calculadora\obj\Debug\net8.0-windows\Calculadora.genruntimeconfig.cache
+D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\Calculadora\obj\Debug\net8.0-windows\ref\Calculadora.dll

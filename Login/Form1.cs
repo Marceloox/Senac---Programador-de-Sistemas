@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -13,12 +14,18 @@ namespace Login
 {
     public partial class Form1 : Form
     {
-        List<string> listaUsuarios = new List<string>() { "neymar.jr", "pablo.vitar", "sukuna.silva" };
-        List<string> listaSenhas = new List<string>() { "Brun@123", "12345Abc!", "Sete7Sete!" };
+        Usuario neymar = new Usuario() { Email = "neymar.jr@email.com", Senha = "Brun@123" };
+        Usuario pablo = new Usuario() { Email = "pablo.vitar@email.com", Senha = "12345Abc!" };
+        Usuario sukuna = new Usuario() { Email = "skuna.silva@email.com", Senha = "Sete7Sete!" };
+
+        List<Usuario> usuarios = new List<Usuario>();
 
         public Form1()
         {
             InitializeComponent();
+            usuarios.Add(neymar);
+            usuarios.Add(pablo);
+            usuarios.Add(sukuna);
         }
 
         private void Entrar_Click(object sender, EventArgs e)
@@ -87,7 +94,7 @@ namespace Login
             {
                 listaUsuarios.Add(novoUsuario);
                 listaSenhas.Add(novaSenha);
-                labelCadastro.Text = "Usuário com sucesso!";
+                labelCadastro.Text = "Usuário cadastrado com sucesso!";
                 labelCadastro.ForeColor = Color.Green;
             }
             else
