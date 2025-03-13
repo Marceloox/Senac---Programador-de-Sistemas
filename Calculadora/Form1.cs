@@ -156,7 +156,7 @@ namespace Calculadora
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonNovoForm_Click(object sender, EventArgs e)
         {
             NovoForm novoForm = new NovoForm();
             novoForm.Show();

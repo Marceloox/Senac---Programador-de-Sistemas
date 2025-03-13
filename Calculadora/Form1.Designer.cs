@@ -45,13 +45,13 @@
             label2 = new Label();
             button1 = new Button();
             labelErro = new Label();
-            button2 = new Button();
+            buttonNovoForm = new Button();
             SuspendLayout();
             // 
             // labelResultado
             // 
             labelResultado.AutoSize = true;
-            labelResultado.Location = new Point(383, 176);
+            labelResultado.Location = new Point(354, 176);
             labelResultado.Name = "labelResultado";
             labelResultado.Size = new Size(12, 15);
             labelResultado.TabIndex = 2;
@@ -209,22 +209,22 @@
             labelErro.Size = new Size(0, 15);
             labelErro.TabIndex = 19;
             // 
-            // button2
+            // buttonNovoForm
             // 
-            button2.Location = new Point(383, 341);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 20;
-            button2.Text = "Novo Form";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            buttonNovoForm.Location = new Point(383, 341);
+            buttonNovoForm.Name = "buttonNovoForm";
+            buttonNovoForm.Size = new Size(75, 23);
+            buttonNovoForm.TabIndex = 20;
+            buttonNovoForm.Text = "Novo Form";
+            buttonNovoForm.UseVisualStyleBackColor = true;
+            buttonNovoForm.Click += buttonNovoForm_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(858, 450);
-            Controls.Add(button2);
+            Controls.Add(buttonNovoForm);
             Controls.Add(labelErro);
             Controls.Add(button1);
             Controls.Add(label2);
@@ -266,6 +266,6 @@
         private Label label2;
         private Button button1;
         private Label labelErro;
-        private Button button2;
+        private Button buttonNovoForm;
     }
 }
