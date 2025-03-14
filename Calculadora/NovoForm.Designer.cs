@@ -38,6 +38,9 @@
             labelErro = new Label();
             buttonCalcular = new Button();
             labelResultado = new Label();
+            labelComprimento = new Label();
+            textBoxComprimento = new TextBox();
+            buttonOutraCalculadora = new Button();
             SuspendLayout();
             // 
             // comboBoxCalculos
@@ -122,7 +125,7 @@
             // 
             // buttonCalcular
             // 
-            buttonCalcular.Location = new Point(319, 374);
+            buttonCalcular.Location = new Point(162, 374);
             buttonCalcular.Name = "buttonCalcular";
             buttonCalcular.Size = new Size(75, 23);
             buttonCalcular.TabIndex = 8;
@@ -133,16 +136,48 @@
             // labelResultado
             // 
             labelResultado.AutoSize = true;
-            labelResultado.Location = new Point(420, 313);
+            labelResultado.Location = new Point(412, 319);
             labelResultado.Name = "labelResultado";
             labelResultado.Size = new Size(0, 15);
             labelResultado.TabIndex = 9;
+            // 
+            // labelComprimento
+            // 
+            labelComprimento.AutoSize = true;
+            labelComprimento.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelComprimento.Location = new Point(272, 275);
+            labelComprimento.Name = "labelComprimento";
+            labelComprimento.Size = new Size(106, 20);
+            labelComprimento.TabIndex = 10;
+            labelComprimento.Text = "Comprimento";
+            labelComprimento.Visible = false;
+            // 
+            // textBoxComprimento
+            // 
+            textBoxComprimento.Location = new Point(272, 316);
+            textBoxComprimento.Name = "textBoxComprimento";
+            textBoxComprimento.Size = new Size(106, 23);
+            textBoxComprimento.TabIndex = 11;
+            textBoxComprimento.Visible = false;
+            // 
+            // buttonOutraCalculadora
+            // 
+            buttonOutraCalculadora.Location = new Point(524, 415);
+            buttonOutraCalculadora.Name = "buttonOutraCalculadora";
+            buttonOutraCalculadora.Size = new Size(112, 23);
+            buttonOutraCalculadora.TabIndex = 12;
+            buttonOutraCalculadora.Text = "Outra Calculadora";
+            buttonOutraCalculadora.UseVisualStyleBackColor = true;
+            buttonOutraCalculadora.Click += buttonOutraCalculadora_Click;
             // 
             // NovoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(648, 450);
+            Controls.Add(buttonOutraCalculadora);
+            Controls.Add(textBoxComprimento);
+            Controls.Add(labelComprimento);
             Controls.Add(labelResultado);
             Controls.Add(buttonCalcular);
             Controls.Add(labelErro);
@@ -171,5 +206,8 @@
         private Label labelErro;
         private Button buttonCalcular;
         private Label labelResultado;
+        private Label labelComprimento;
+        private TextBox textBoxComprimento;
+        private Button buttonOutraCalculadora;
     }
 }

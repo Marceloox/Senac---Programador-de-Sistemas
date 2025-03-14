@@ -37,6 +37,8 @@ namespace Calculadora
                     textBoxBase.Visible = true;
                     labelAltura.Visible = true;
                     textBoxAltura.Visible = true;
+                    labelComprimento.Visible = false;
+                    textBoxComprimento.Visible = false;
                     break;
 
                 case "Perímetro":
@@ -44,9 +46,17 @@ namespace Calculadora
                     textBoxBase.Visible = true;
                     labelAltura.Visible = true;
                     textBoxAltura.Visible = true;
+                    labelComprimento.Visible = false;
+                    textBoxComprimento.Visible = false;
                     break;
 
                 case "Volume":
+                    labelBase.Visible = true;
+                    textBoxBase.Visible = true;
+                    labelAltura.Visible = true;
+                    textBoxAltura.Visible = true;
+                    labelComprimento.Visible = true;
+                    textBoxComprimento.Visible = true;
                     break;
             }
 
@@ -59,25 +69,62 @@ namespace Calculadora
         {
             string Base = textBoxBase.Text;
             string altura = textBoxAltura.Text;
+            string comprimento = textBoxComprimento.Text;
 
             double doubleBase = Convert.ToDouble(Base);
             double doubleAltura = Convert.ToDouble(altura);
+            double doubleComprimento = Convert.ToDouble(comprimento);
+            doubleComprimento = 1;
             double resultado;
 
             switch (comboBoxCalculos.SelectedItem)
             {
                 case "Área":
-                if (doubleBase > 0 && doubleAltura > 0)
-                {
-                    resultado = doubleBase * doubleAltura;
-                    labelResultado.Text = resultado.ToString();
-                }
-                else
-                {
-                    labelErro.Text = "O valor não pode ser 0";
-                }
+                    if (doubleBase > 0 && doubleAltura > 0)
+                    {
+                        resultado = doubleBase * doubleAltura;
+                        labelResultado.Text = resultado.ToString();
+                    }
+                    else
+                    {
+                        labelErro.Text = "O valor não pode ser 0";
+                    }
                     break;
+
+                case "Perímetro":
+                    if (doubleBase > 0 && doubleAltura > 0)
+                    {
+                        resultado = doubleBase * doubleBase + doubleAltura * doubleAltura;
+                        labelResultado.Text = resultado.ToString();
+                    }
+                    else
+                    {
+                        labelErro.Text = "O valor não pode ser 0";
+                    }
+                    break;
+
+                case "Volume":
+                    if (doubleBase > 0 && doubleAltura > 0)
+                    {
+                        resultado = doubleBase * doubleAltura * doubleComprimento;
+                        labelResultado.Text = resultado.ToString();
+                    }
+                    else
+                    {
+                        labelErro.Text = "O valor não pode ser 0";
+                    }
+                    break;
+
+
             }
+        }
+
+        private void buttonOutraCalculadora_Click(object sender, EventArgs e)
+        {
+            NovoForm2 novoForm2 = new NovoForm2();
+            novoForm2.Show();
+
+            this.Hide();
         }
     }
 }

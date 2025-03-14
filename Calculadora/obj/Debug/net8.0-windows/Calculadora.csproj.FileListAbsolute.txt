@@ -16,3 +16,4 @@ D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\Calculadora\obj\Debug
 D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\Calculadora\obj\Debug\net8.0-windows\Calculadora.genruntimeconfig.cache
 D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\Calculadora\obj\Debug\net8.0-windows\ref\Calculadora.dll
 D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\Calculadora\obj\Debug\net8.0-windows\Calculadora.NovoForm.resources
+D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\Calculadora\obj\Debug\net8.0-windows\Calculadora.NovoForm2.resources
