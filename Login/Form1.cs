@@ -39,7 +39,7 @@ namespace Login
                 labelResultado.ForeColor = Color.Red;
                 return;
             }
-            else if (senha == null || senha == "")
+            else if (string.IsNullOrWhiteSpace(senha))
             {
                 labelResultado.Text = "Senha é obrigatorio!!!";
                 labelResultado.ForeColor = Color.Red;
