@@ -38,6 +38,7 @@
             maskedTextBoxTelefone = new MaskedTextBox();
             label5 = new Label();
             groupBox1 = new GroupBox();
+            dataGridViewClientes = new DataGridView();
             labelErro = new Label();
             labelAviso = new Label();
             buttonCadastrar = new Button();
@@ -69,15 +70,16 @@
             comboBoxGenero = new ComboBox();
             label6 = new Label();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewClientes).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(197, 12);
+            label1.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            label1.Location = new Point(195, 12);
             label1.Name = "label1";
-            label1.Size = new Size(147, 32);
+            label1.Size = new Size(177, 40);
             label1.TabIndex = 0;
             label1.Text = "Cadastre-se";
             // 
@@ -153,6 +155,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(dataGridViewClientes);
             groupBox1.Controls.Add(labelErro);
             groupBox1.Controls.Add(labelAviso);
             groupBox1.Controls.Add(buttonCadastrar);
@@ -194,9 +197,23 @@
             groupBox1.Controls.Add(label5);
             groupBox1.Location = new Point(6, -3);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(585, 631);
+            groupBox1.Size = new Size(1181, 631);
             groupBox1.TabIndex = 9;
             groupBox1.TabStop = false;
+            // 
+            // dataGridViewClientes
+            // 
+            dataGridViewClientes.AllowUserToAddRows = false;
+            dataGridViewClientes.AllowUserToDeleteRows = false;
+            dataGridViewClientes.AllowUserToOrderColumns = true;
+            dataGridViewClientes.AllowUserToResizeRows = false;
+            dataGridViewClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewClientes.Location = new Point(714, 154);
+            dataGridViewClientes.MultiSelect = false;
+            dataGridViewClientes.Name = "dataGridViewClientes";
+            dataGridViewClientes.ReadOnly = true;
+            dataGridViewClientes.Size = new Size(394, 307);
+            dataGridViewClientes.TabIndex = 3;
             // 
             // labelErro
             // 
@@ -483,12 +500,13 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(603, 631);
+            ClientSize = new Size(1212, 631);
             Controls.Add(groupBox1);
             Name = "Form1";
             Text = "Form1";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewClientes).EndInit();
             ResumeLayout(false);
         }
 
@@ -534,5 +552,6 @@
         private Label label19;
         private Label labelErro;
         private Label labelAviso;
+        private DataGridView dataGridViewClientes;
     }
 }

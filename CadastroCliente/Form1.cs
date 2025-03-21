@@ -3,18 +3,22 @@ namespace CadastroCliente
     public partial class Form1 : Form
     {
         List<Cliente> clientes = new List<Cliente>();
+        private readonly BindingSource BindingSource = [];
         public Form1()
         {
             InitializeComponent();
-            EnderecoCliente enderecoId1 = new EnderecoCliente() { logradouro = "Rua José Francisco de Freitas", numero = "133", complemento = "Não tem", bairro = "Jardim Maria Rita", municipio = "São Paulo", estado = "São Paulo", cep = "04814-180" };
-            EnderecoCliente enderecoId2 = new EnderecoCliente() { logradouro = "Rua Manoel Caldeira", numero = "583", complemento = "Não tem", bairro = "Jardim Ana Lúcia", municipio = "São Paulo", estado = "São Paulo", cep = "04812-000" };
-            EnderecoCliente enderecoId3 = new EnderecoCliente() { logradouro = "Avenida Gonçalo de Paiva de Gomes", numero = "166", complemento = "Não tem", bairro = "Jardim República", municipio = "São Paulo", estado = "São Paulo", cep = "04915-160" };
-            clientes.Add(new Cliente() { id = 1, nome = "Marcelo Ferreira", DataNascimento = "06/07/2006", telefone = "(11)96029-5985", email = "marcelo06ferr@email.com", endereco = enderecoId1, genero = GeneroCliente.Masculino, NomeSocial = "Não se aplica", Etnia = EtniaCliente.Branco, estrangeiro = false, tipo = TipoCliente.PF });
-            clientes.Add(new Cliente() { id = 2, nome = "Eduardo Henrique", DataNascimento = "10/11/1996", telefone = "(11)98020-2499", email = "edu1910@email.com", endereco = enderecoId2, genero = GeneroCliente.Masculino, NomeSocial = "Não se aplica", Etnia = EtniaCliente.Branco, estrangeiro = false, tipo = TipoCliente.PF });
-            clientes.Add(new Cliente() { id = 3, nome = "Leonice Ramos", DataNascimento = "11/12/1956", telefone = "(11)98020-2502", email = "nice.mwa@email.com", endereco = enderecoId3, genero = GeneroCliente.Feminino, NomeSocial = "Não se aplica", Etnia = EtniaCliente.Branco, estrangeiro = false, tipo = TipoCliente.PF });
+            EnderecoCliente enderecoIdMarcelo = new EnderecoCliente() { logradouro = "Rua José Francisco de Freitas", numero = "133", complemento = "Não tem", bairro = "Jardim Maria Rita", municipio = "São Paulo", estado = "São Paulo", cep = "04814-180" };
+            EnderecoCliente enderecoIdEduardo = new EnderecoCliente() { logradouro = "Rua Manoel Caldeira", numero = "583", complemento = "Não tem", bairro = "Jardim Ana Lúcia", municipio = "São Paulo", estado = "São Paulo", cep = "04812-000" };
+            EnderecoCliente enderecoIdLeonice = new EnderecoCliente() { logradouro = "Avenida Gonçalo de Paiva de Gomes", numero = "166", complemento = "Não tem", bairro = "Jardim República", municipio = "São Paulo", estado = "São Paulo", cep = "04915-160" };
+            clientes.Add(new Cliente() { id = 1, nome = "Marcelo Ferreira", DataNascimento = "06/07/2006", telefone = "(11)96029-5985", email = "marcelo06ferr@email.com", endereco = enderecoIdMarcelo, genero = GeneroCliente.Masculino, NomeSocial = "Não se aplica", Etnia = EtniaCliente.Branco, estrangeiro = false, tipo = TipoCliente.PF });
+            clientes.Add(new Cliente() { id = 2, nome = "Eduardo Henrique", DataNascimento = "10/11/1996", telefone = "(11)98020-2499", email = "edu1910@email.com", endereco = enderecoIdEduardo, genero = GeneroCliente.Masculino, NomeSocial = "Não se aplica", Etnia = EtniaCliente.Branco, estrangeiro = false, tipo = TipoCliente.PF });
+            clientes.Add(new Cliente() { id = 3, nome = "Leonice Ramos", DataNascimento = "11/12/1956", telefone = "(11)98020-2502", email = "nice.mwa@email.com", endereco = enderecoIdLeonice, genero = GeneroCliente.Feminino, NomeSocial = "Não se aplica", Etnia = EtniaCliente.Branco, estrangeiro = false, tipo = TipoCliente.PF });
 
+
+            BindingSource.DataSource = clientes;
+            dataGridViewClientes.DataSource = clientes;
         }
-        
+
         public bool LimparErro()
         {
             labelErro.Text = "";
@@ -41,7 +45,7 @@ namespace CadastroCliente
                 labelErro.ForeColor = Color.Red;
                 return false;
             }
-            if (!nomeCliente.All(char.IsLetter))
+            if (nomeCliente.Any(char.IsNumber))
             {
                 labelErro.Text = "O Nome só pode conter letras!!!";
                 labelErro.ForeColor = Color.Red;
@@ -183,6 +187,7 @@ namespace CadastroCliente
 
         private void buttonCadastrar_Click(object sender, EventArgs e)
         {
+            //Validações
             if (!LimparErro())
             {
                 return;
@@ -192,28 +197,69 @@ namespace CadastroCliente
             {
                 return;
             }
-            
-            /*
+
+            TipoCliente tipo;
+
+            if (radioButtonPF.Checked)
+            {
+                tipo = TipoCliente.PF;
+            }
+            else
+            {
+                tipo = TipoCliente.PJ;
+            }
+
+            GeneroCliente Genero;
+
+            switch (comboBoxGenero.SelectedIndex)
+            {
+                case 0:
+                    Genero = GeneroCliente.Masculino;
+                    break;
+
+                case 1:
+                    Genero = GeneroCliente.Feminino;
+                    break;
+
+                case 2:
+                    Genero = GeneroCliente.NãoBinário;
+                    break;
+
+                case 3:
+                    Genero = GeneroCliente.Outro;
+                    break;
+                default:
+                    Genero = GeneroCliente.Outro;
+                    break;
+            }
+
+
             string emailCliente = textBoxEmail.Text;
             string telefoneCliente = maskedTextBoxTelefone.Text;
             int ClienteCadastrado = -1;
 
-            for (int i = 0; i < clientes.Count; i++) 
+            for (int i = 0; i < clientes.Count; i++)
             {
-                if (emailCliente == clientes[i].email && telefoneCliente == clientes[i].telefone)
+                if (emailCliente == clientes[i].email || telefoneCliente == clientes[i].telefone)
                 {
                     ClienteCadastrado = i;
                 }
             }
-            
+
             if (ClienteCadastrado > -1)
             {
                 labelAviso.Text = "Cliente já cadastrado!";
+                labelAviso.ForeColor = Color.Red;
             }
             else
             {
+                EnderecoCliente enderecoNovoCliente = new EnderecoCliente() { logradouro = textBoxLogradouro.Text, numero = textBoxNumeroCs.Text, complemento = textBoxComple.Text, bairro = textBoxBairro.Text, municipio = textBoxMunicipio.Text, estado = comboBoxEstado.Text, cep = maskedTextBoxCep.Text };
+                clientes.Add(new Cliente() {id = clientes.ElementAt(clientes.Count - 1).id + 1 ,nome = textBoxNome.Text, DataNascimento = maskedTextBoxDataNasc.Text, telefone = maskedTextBoxTelefone.Text, email = textBoxEmail.Text, genero = Genero, NomeSocial = textBoxNomeSocial.Text, Etnia = EtniaCliente.Branco, estrangeiro = checkBoxEstrangeiro.Checked, tipo = tipo, endereco = enderecoNovoCliente });
                 labelAviso.Text = "Cliente Cadastrado!";
-            }*/
+                labelAviso.ForeColor = Color.Green;
+                BindingSource.ResetBindings(false);
+            }
+
         }
     }
 }
