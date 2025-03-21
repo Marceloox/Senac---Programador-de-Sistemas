@@ -12,7 +12,8 @@ namespace CadastroCliente
         Negro,
         Pardo,
         Indígena,
-        Amarelo
+        Amarelo,
+        Outro
         
     }
 }

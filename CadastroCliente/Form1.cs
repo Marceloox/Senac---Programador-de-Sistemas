@@ -16,7 +16,7 @@ namespace CadastroCliente
 
 
             BindingSource.DataSource = clientes;
-            dataGridViewClientes.DataSource = clientes;
+            dataGridViewClientes.DataSource = BindingSource;
         }
 
         public bool LimparErro()
@@ -228,8 +228,38 @@ namespace CadastroCliente
                 case 3:
                     Genero = GeneroCliente.Outro;
                     break;
+
                 default:
                     Genero = GeneroCliente.Outro;
+                    break;
+            }
+
+            EtniaCliente etnia;
+
+            switch (comboBoxEtnia.SelectedIndex)
+            {
+                case 0:
+                    etnia = EtniaCliente.Branco;
+                    break;
+
+                case 1:
+                    etnia = EtniaCliente.Negro;
+                    break;
+
+                case 2:
+                    etnia = EtniaCliente.Pardo;
+                    break;
+
+                case 3:
+                    etnia = EtniaCliente.Indígena;
+                    break;
+
+                case 4:
+                    etnia = EtniaCliente.Amarelo;
+                    break;
+
+                default:
+                    etnia = EtniaCliente.Outro;
                     break;
             }
 
@@ -254,7 +284,7 @@ namespace CadastroCliente
             else
             {
                 EnderecoCliente enderecoNovoCliente = new EnderecoCliente() { logradouro = textBoxLogradouro.Text, numero = textBoxNumeroCs.Text, complemento = textBoxComple.Text, bairro = textBoxBairro.Text, municipio = textBoxMunicipio.Text, estado = comboBoxEstado.Text, cep = maskedTextBoxCep.Text };
-                clientes.Add(new Cliente() {id = clientes.ElementAt(clientes.Count - 1).id + 1 ,nome = textBoxNome.Text, DataNascimento = maskedTextBoxDataNasc.Text, telefone = maskedTextBoxTelefone.Text, email = textBoxEmail.Text, genero = Genero, NomeSocial = textBoxNomeSocial.Text, Etnia = EtniaCliente.Branco, estrangeiro = checkBoxEstrangeiro.Checked, tipo = tipo, endereco = enderecoNovoCliente });
+                clientes.Add(new Cliente() { id = clientes.ElementAt(clientes.Count - 1).id + 1, nome = textBoxNome.Text, DataNascimento = maskedTextBoxDataNasc.Text, telefone = maskedTextBoxTelefone.Text, email = textBoxEmail.Text, genero = Genero, NomeSocial = textBoxNomeSocial.Text, Etnia = etnia, estrangeiro = checkBoxEstrangeiro.Checked, tipo = tipo, endereco = enderecoNovoCliente });
                 labelAviso.Text = "Cliente Cadastrado!";
                 labelAviso.ForeColor = Color.Green;
                 BindingSource.ResetBindings(false);
