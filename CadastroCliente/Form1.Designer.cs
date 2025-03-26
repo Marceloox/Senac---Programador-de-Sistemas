@@ -76,8 +76,8 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label1.Location = new Point(195, 12);
+            label1.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold | FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point, 0);
+            label1.Location = new Point(179, 19);
             label1.Name = "label1";
             label1.Size = new Size(177, 40);
             label1.TabIndex = 0;
@@ -208,11 +208,11 @@
             dataGridViewClientes.AllowUserToOrderColumns = true;
             dataGridViewClientes.AllowUserToResizeRows = false;
             dataGridViewClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewClientes.Location = new Point(714, 154);
+            dataGridViewClientes.Location = new Point(670, 100);
             dataGridViewClientes.MultiSelect = false;
             dataGridViewClientes.Name = "dataGridViewClientes";
             dataGridViewClientes.ReadOnly = true;
-            dataGridViewClientes.Size = new Size(394, 307);
+            dataGridViewClientes.Size = new Size(438, 369);
             dataGridViewClientes.TabIndex = 3;
             // 
             // labelErro
