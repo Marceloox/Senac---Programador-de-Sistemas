@@ -191,10 +191,77 @@ LEFT JOIN
 Exercício 5
 */
 
-
+-- Tarefas
+SELECT 
+    cliente.nome,
+    cliente.cidade,
+    pedido.valor 
+FROM
+    pedido
+INNER JOIN
+    cliente ON pedido.id_cliente = cliente.id
+WHERE
+    pedido.valor > (SELECT AVG(valor) FROM pedido);
     
+SELECT
+	cliente.nome,
+    cliente.cidade,
+    pedido.valor
+FROM
+	pedido
+INNER JOIN
+	cliente ON pedido.id_cliente = cliente.id
+WHERE
+	pedido.valor > 1000;
     
 
+/*
+Exercício 6
+*/
+
+DROP TABLE cliente;
+
+CREATE TABLE IF NOT EXISTS cliente (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	nome VARCHAR(100) NOT NULL,
+    idade INT NOT NULL,
+    cidade VARCHAR(50) NOT NULL,
+    saldo INT NOT NULL
+);
+
+INSERT INTO cliente (
+	nome,
+    idade,
+    cidade,
+    saldo
+)
+VALUES 
+("Carlos", 45, "São Paulo", 2500.00),
+("Mariana", 32, "Rio de Janeiro", 3200.50),
+("Pedro", 27, "Belo Horizonte", 1500.75),
+("Fernanda", 38, "Curitiba", 4200.00);
+
+-- Tarefas
+INSERT INTO cliente (
+	nome,
+	cidade
+ )
+ VALUES
+ ("Rafael", "Porto Alegre");
+ 
+UPDATE
+	cliente
+SET
+	saldo = saldo + (saldo + 0.10);
+
+DELETE FROM
+	pedido
+WHERE
+	pedido.valor < 500;
+ 
 
 
+
+ 
+ 
  
