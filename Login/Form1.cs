@@ -1,167 +1,218 @@
-ï»¿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Data;
-using System.Drawing;
+using MySql.Data.MySqlClient;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Login
 {
-    public partial class Form1 : Form
+    public partial class FormLogin : Form
     {
-        Usuario neymar = new Usuario() { Email = "neymar.jr@email.com", Senha = "Brun@123" };
-        Usuario pablo = new Usuario() { Email = "pablo.vitar@email.com", Senha = "12345Abc!" };
-        Usuario sukuna = new Usuario() { Email = "skuna.silva@email.com", Senha = "Sete7Sete!" };
+        private static readonly string ConnectionString = "datasource=localhost;username=root;password=;database=senacmarcelo;";
+        private readonly MySqlConnection Connection = new MySqlConnection(ConnectionString);
+        
 
-        List<Usuario> usuarios = new List<Usuario>();
-
-        public Form1()
+        // Construtor da classe
+        public FormLogin()
         {
             InitializeComponent();
-            usuarios.Add(neymar);
-            usuarios.Add(pablo);
-            usuarios.Add(sukuna);
         }
 
-        private void Entrar_Click(object sender, EventArgs e)
+        // Método executado ao clicar no botão Entrar
+        private void buttonEntrar_Click(object sender, EventArgs e)
         {
+            // Busca o usuário e senha digitados
             string usuarioBuscado = textBoxUsuario.Text;
             string senha = textBoxSenha.Text;
 
+            // Verifica se o usuário foi digitado
             if (string.IsNullOrWhiteSpace(usuarioBuscado))
             {
-                labelResultado.Text = "UsuÃ¡rio Ã© obrigatorio!!!";
+                // Exibe mensagem de erro
+                labelResultado.Text = "Usuario eh obrigatorio!!!";
+                // Muda a cor da mensagem para vermelho
                 labelResultado.ForeColor = Color.Red;
-                return;
-            }
-            else if (string.IsNullOrWhiteSpace(senha))
-            {
-                labelResultado.Text = "Senha Ã© obrigatorio!!!";
-                labelResultado.ForeColor = Color.Red;
+                // Encerra a execução do método
                 return;
             }
 
-            /*else
-              {
-                  labelResultado.Text = "Usuario e Senha sÃ£o obrigatorios!!!";
-                  labelResultado.ForeColor = Color.Red;
-              }*/
-
-            int posicaoUsuarioEncontrado = -1;
-
-            for (int i = 0; i < listaUsuarios.Count; i++)
+            // Verifica se a senha foi digitada
+            if (string.IsNullOrWhiteSpace(senha))
             {
-                if (usuarioBuscado == listaUsuarios[i])
-                {
-                    posicaoUsuarioEncontrado = i;
-                }
-            }
-
-
-
-            if (posicaoUsuarioEncontrado > -1 && senha == listaSenhas[posicaoUsuarioEncontrado])
-            {
-                labelResultado.Text = "Autenticado com sucesso!";
-                labelResultado.ForeColor = Color.Green;
-            }
-            else
-            {
-                labelResultado.Text = "Usuario ou Senha incorretos...";
+                // Exibe mensagem de erro
+                labelResultado.Text = "Senha eh obrigatoria!!!";
+                // Muda a cor da mensagem para vermelho
                 labelResultado.ForeColor = Color.Red;
+                // Encerra a execução do método
+                return;
             }
-        }
 
-        private void buttonCadastrar_Click(object sender, EventArgs e)
-        {
-            string novoUsuario = textBoxnovoUsuario.Text;
-            string novaSenha = textBoxnovaSenha.Text;
-            /*bool usuarioEncontrado = false;
-
-            for (int i = 0; i < listaUsuarios.Count; i++)
-            {
-                if (novoUsuario == listaUsuarios[i])
+            // Verifica se o usuário e senha estão corretos
+            // Inicializa a variável autenticado como false
+            bool autenticado = false;
+            // Percorre a lista de usuários usando um laço de repetição
+            /*for (int i = 0; i < usuarios.Count; i++) {
+                // Verifica se o usuário e senha digitados são iguais ao usuário e senha da lista
+                if (usuarios[i].Email == usuarioBuscado && usuarios[i].Senha == senha)
                 {
-                    usuarioEncontrado = true;
+                    // Se forem iguais, muda a variável autenticado para true
+                    autenticado = true;
                 }
-            }
-
-            if (usuarioEncontrado == false)
-            {
-                listaUsuarios.Add(novoUsuario);
-                listaSenhas.Add(novaSenha);
-                labelCadastro.Text = "UsuÃ¡rio cadastrado com sucesso!";
-                labelCadastro.ForeColor = Color.Green;
-            }
-            else
-            {
-                labelCadastro.Text = "JÃ¡ existe um usuÃ¡rio cadastrado";
-                labelCadastro.ForeColor = Color.Red;
             }*/
 
+            try 
+            {
+                Connection.Open();
+
+                string query = $"SELECT senha FROM usuario WHERE email = '{usuarioBuscado}';";
+
+                MySqlCommand mySqlCommand = new MySqlCommand(query, Connection);
+                MySqlDataReader reader = mySqlCommand.ExecuteReader();
+
+                autenticado = reader.Read() && reader.GetString(0) == senha;
+            }
+            catch
+            {
+                MessageBox.Show("Erro de banco de dados");
+            }
+            finally
+            {
+                Connection.Close();
+            }
+
+            // Verifica se o usuário e senha não foram encontrados
+            if (!autenticado)
+            {
+                // Exibe mensagem de erro
+                labelResultado.Text = "Usuario ou Senha incorretos...";
+                // Muda a cor da mensagem para vermelho
+                labelResultado.ForeColor = Color.Red;
+                // Encerra a execução do método
+                return;
+            }
+
+            // Se o usuário e senha foram encontrados, exibe mensagem de sucesso
+            labelResultado.Text = "Autenticado com sucesso!";
+            // Muda a cor da mensagem para verde
+            labelResultado.ForeColor = Color.Green;
+
+            // Limpa os campos de texto
+            textBoxUsuario.Clear();
+            textBoxSenha.Clear();
+        }
+
+        // Método executado ao clicar no botão Cadastrar
+        private void buttonCadastrar_Click(object sender, EventArgs e)
+        {
+            // Busca o novo usuário e senha digitados
+            string novoUsuario = textBoxNovoUsuario.Text;
+            string novaSenha = textBoxNovaSenha.Text;
+
+            // Verifica se o novo usuário foi digitado
             if (string.IsNullOrWhiteSpace(novoUsuario))
             {
-                labelCadastro.Text = "Usuario eh obrigatorio!!!";
+                labelResultado.Text = "Usuario eh obrigatorio!!!";
                 return;
             }
 
+            // Verifica se a nova senha foi digitada
             if (string.IsNullOrWhiteSpace(novaSenha))
             {
-                labelCadastro.Text = "Senha eh obrigatoria!!!";
+                labelResultado.Text = "Senha eh obrigatoria!!!";
                 return;
             }
 
+            // Verifica se a senha tem pelo menos 8 caracteres
             if (novaSenha.Length < 8)
             {
-                labelCadastro.Text = "A senha deve ter pelo menos 8 caracteres";
+                labelResultado.Text = "A senha deve ter pelo menos 8 caracteres";
                 return;
             }
 
+            // Verifica se a senha tem pelo menos uma letra maiúscula
             if (!novaSenha.Any(char.IsUpper))
             {
-                labelCadastro.Text = "A senha deve ter pelo menos uma letra maiuscula";
+                labelResultado.Text = "A senha deve ter pelo menos uma letra maiuscula";
                 return;
             }
 
+            // Verifica se a senha tem pelo menos uma letra minúscula
             if (!novaSenha.Any(char.IsLower))
             {
-                labelCadastro.Text = "A senha deve ter pelo menos uma letra minuscula";
+                labelResultado.Text = "A senha deve ter pelo menos uma letra minuscula";
                 return;
             }
 
-            if (!novaSenha.Any(char.IsDigit))
+            // Verifica se a senha tem pelo menos um número
+            if (!novaSenha.Any(char.IsNumber))
             {
-                labelCadastro.Text = "A senha deve ter pelo menos um numero";
+                labelResultado.Text = "A senha deve ter pelo menos um numero";
                 return;
             }
 
+            // Verifica se a senha tem pelo menos um caracter especial
             if (!novaSenha.Any(char.IsPunctuation) && !novaSenha.Any(char.IsSymbol) && !novaSenha.Contains('@'))
             {
-                labelCadastro.Text = "A senha deve ter pelo menos um caracter especial";
+                labelResultado.Text = "A senha deve ter pelo menos um caracter especial";
                 return;
             }
 
-            if (novaSenha.Contains(' '))
+            // Verifica se a senha tem espaços em branco
+            if (novaSenha.Any(char.IsWhiteSpace))
             {
-                labelCadastro.Text = "A senha nao deve ter espacos em branco";
+                labelResultado.Text = "A senha nao deve ter espacos em branco";
                 return;
             }
 
-            if (listaUsuarios.Contains(novoUsuario))
+            // Verifica se o novo usuário já está cadastrado
+            bool encontrado = false;
+
+            try 
             {
-                labelCadastro.Text = "JÃ¡ existe um usuÃ¡rio cadastrado";
+                Connection.Open();
+
+                string query = $"SELECT email FROM usuario WHERE email = '{novoUsuario}';";
+
+                MySqlCommand mySqlCommand = new MySqlCommand(query, Connection);
+                MySqlDataReader reader = mySqlCommand.ExecuteReader();
+
+                encontrado = reader.Read();
+            }
+            catch
+            {
+                MessageBox.Show("Erro de banco de dados");
+            }
+            finally
+            {
+                Connection.Close();
+            }
+
+            // Se o usuário já estiver cadastrado, exibe mensagem de erro
+            if (encontrado)
+            {
+                labelResultado.Text = "Já existe um usuário cadastrado";
                 return;
             }
 
-            listaUsuarios.Add(novoUsuario);
-            listaSenhas.Add(novaSenha);
-            labelCadastro.Text = "UsuÃ¡rio cadastrado com sucesso!";
-            textBoxnovoUsuario.Clear();
-            textBoxnovaSenha.Clear();
+            // Adiciona o novo usuário na lista
+            try
+            {
+                Connection.Open();
+
+                string query = $"INSERT INTO usuario (email, senha) VALUES ('{novoUsuario}', '{novaSenha}');";
+
+                MySqlCommand mySqlCommand = new MySqlCommand(query, Connection);
+                mySqlCommand.ExecuteNonQuery();
+
+                labelResultado.Text = "Usuário cadastrado com sucesso!";
+                textBoxNovoUsuario.Clear();
+                textBoxNovaSenha.Clear();
+            }
+            catch
+            {
+                MessageBox.Show("Erro de banco de dados");
+            }
+            finally
+            {
+                Connection.Close();
+            }
         }
     }
 }
