@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>CadastroCliente</id>
+    <version>1.0.0</version>
+    <authors>CadastroCliente</authors>
+    <description>Package Description</description>
+    <repository type="git" commit="5f1669bb5686faa03b9fd944141cf6b94ec84eb8" />
+    <dependencies>
+      <group targetFramework="net8.0-windows7.0" />
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net8.0-windows7.0">
+        <frameworkReference name="Microsoft.WindowsDesktop.App.WindowsForms" />
+      </group>
+    </frameworkReferences>
+  </metadata>
+  <files>
+    <file src="D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\CadastroCliente\bin\Debug\net8.0-windows\CadastroCliente.runtimeconfig.json" target="lib\net8.0-windows7.0\CadastroCliente.runtimeconfig.json" />
+    <file src="D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\CadastroCliente\bin\Debug\net8.0-windows\CadastroCliente.dll" target="lib\net8.0-windows7.0\CadastroCliente.dll" />
+  </files>
+</package>

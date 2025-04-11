@@ -2,21 +2,21 @@ namespace CadastroCliente
 {
     public partial class Form1 : Form
     {
-        List<Cliente> clientes = new List<Cliente>();
-        private readonly BindingSource BindingSource = [];
+        /*List<Cliente> clientes = new List<Cliente>();
+        private readonly BindingSource BindingSource = [];*/
         public Form1()
         {
             InitializeComponent();
-            EnderecoCliente enderecoIdMarcelo = new EnderecoCliente() { logradouro = "Rua José Francisco de Freitas", numero = "133", complemento = "Não tem", bairro = "Jardim Maria Rita", municipio = "São Paulo", estado = "São Paulo", cep = "04814-180" };
-            EnderecoCliente enderecoIdEduardo = new EnderecoCliente() { logradouro = "Rua Manoel Caldeira", numero = "583", complemento = "Não tem", bairro = "Jardim Ana Lúcia", municipio = "São Paulo", estado = "São Paulo", cep = "04812-000" };
-            EnderecoCliente enderecoIdLeonice = new EnderecoCliente() { logradouro = "Avenida Gonçalo de Paiva de Gomes", numero = "166", complemento = "Não tem", bairro = "Jardim República", municipio = "São Paulo", estado = "São Paulo", cep = "04915-160" };
-            clientes.Add(new Cliente() { id = 1, nome = "Marcelo Ferreira", DataNascimento = "06/07/2006", telefone = "(11) 96029-5985", email = "marcelo06ferr@email.com", endereco = enderecoIdMarcelo, genero = GeneroCliente.Masculino, NomeSocial = "", Etnia = EtniaCliente.Branco, estrangeiro = false, tipo = TipoCliente.PF });
-            clientes.Add(new Cliente() { id = 2, nome = "Eduardo Henrique", DataNascimento = "10/11/1996", telefone = "(11) 98020-2499", email = "edu1910@email.com", endereco = enderecoIdEduardo, genero = GeneroCliente.Masculino, NomeSocial = "", Etnia = EtniaCliente.Branco, estrangeiro = false, tipo = TipoCliente.PF });
-            clientes.Add(new Cliente() { id = 3, nome = "Leonice Ramos", DataNascimento = "11/12/1956", telefone = "(11) 98020-2502", email = "nice.mwa@email.com", endereco = enderecoIdLeonice, genero = GeneroCliente.Feminino, NomeSocial = "", Etnia = EtniaCliente.Branco, estrangeiro = false, tipo = TipoCliente.PF });
+            /* EnderecoCliente enderecoIdMarcelo = new EnderecoCliente() { logradouro = "Rua José Francisco de Freitas", numero = "133", complemento = "Não tem", bairro = "Jardim Maria Rita", municipio = "São Paulo", estado = "São Paulo", cep = "04814-180" };
+             EnderecoCliente enderecoIdEduardo = new EnderecoCliente() { logradouro = "Rua Manoel Caldeira", numero = "583", complemento = "Não tem", bairro = "Jardim Ana Lúcia", municipio = "São Paulo", estado = "São Paulo", cep = "04812-000" };
+             EnderecoCliente enderecoIdLeonice = new EnderecoCliente() { logradouro = "Avenida Gonçalo de Paiva de Gomes", numero = "166", complemento = "Não tem", bairro = "Jardim República", municipio = "São Paulo", estado = "São Paulo", cep = "04915-160" };
+             clientes.Add(new Cliente() { id = 1, nome = "Marcelo Ferreira", DataNascimento = "06/07/2006", telefone = "(11) 96029-5985", email = "marcelo06ferr@email.com", endereco = enderecoIdMarcelo, genero = GeneroCliente.Masculino, NomeSocial = "", Etnia = EtniaCliente.Branco, estrangeiro = false, tipo = TipoCliente.PF });
+             clientes.Add(new Cliente() { id = 2, nome = "Eduardo Henrique", DataNascimento = "10/11/1996", telefone = "(11) 98020-2499", email = "edu1910@email.com", endereco = enderecoIdEduardo, genero = GeneroCliente.Masculino, NomeSocial = "", Etnia = EtniaCliente.Branco, estrangeiro = false, tipo = TipoCliente.PF });
+             clientes.Add(new Cliente() { id = 3, nome = "Leonice Ramos", DataNascimento = "11/12/1956", telefone = "(11) 98020-2502", email = "nice.mwa@email.com", endereco = enderecoIdLeonice, genero = GeneroCliente.Feminino, NomeSocial = "", Etnia = EtniaCliente.Branco, estrangeiro = false, tipo = TipoCliente.PF });
 
 
-            BindingSource.DataSource = clientes;
-            dataGridViewClientes.DataSource = BindingSource;
+             BindingSource.DataSource = clientes;
+             dataGridViewClientes.DataSource = BindingSource;*/
         }
 
         public bool LimparErro()
@@ -187,6 +187,7 @@ namespace CadastroCliente
 
         private void buttonCadastrar_Click(object sender, EventArgs e)
         {
+            /*
             //Validações
             if (!LimparErro())
             {
@@ -288,7 +289,7 @@ namespace CadastroCliente
                 labelAviso.Text = "Cliente Cadastrado!";
                 labelAviso.ForeColor = Color.Green;
                 BindingSource.ResetBindings(false);
-            }
+            }*/
 
         }
     }
