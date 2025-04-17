@@ -34,6 +34,7 @@ namespace ListaAtividades
             dataGridViewAtividades = new DataGridView();
             buttonAtulizar = new Button();
             buttonCriar = new Button();
+            labelErro = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAtividades).BeginInit();
             SuspendLayout();
             // 
@@ -53,12 +54,20 @@ namespace ListaAtividades
             buttonFinalizar.TabIndex = 1;
             buttonFinalizar.Text = "Finalizar";
             buttonFinalizar.UseVisualStyleBackColor = true;
+            buttonFinalizar.Click += buttonFinalizar_Click;
             // 
             // dataGridViewAtividades
             // 
+            dataGridViewAtividades.AccessibleRole = AccessibleRole.IpAddress;
+            dataGridViewAtividades.AllowUserToAddRows = false;
+            dataGridViewAtividades.AllowUserToDeleteRows = false;
+            dataGridViewAtividades.AllowUserToResizeColumns = false;
+            dataGridViewAtividades.AllowUserToResizeRows = false;
             dataGridViewAtividades.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewAtividades.Location = new Point(12, 90);
+            dataGridViewAtividades.MultiSelect = false;
             dataGridViewAtividades.Name = "dataGridViewAtividades";
+            dataGridViewAtividades.ReadOnly = true;
             dataGridViewAtividades.Size = new Size(406, 315);
             dataGridViewAtividades.TabIndex = 2;
             // 
@@ -70,6 +79,7 @@ namespace ListaAtividades
             buttonAtulizar.TabIndex = 3;
             buttonAtulizar.Text = "Atualizar";
             buttonAtulizar.UseVisualStyleBackColor = true;
+            buttonAtulizar.Click += buttonAtulizar_Click;
             // 
             // buttonCriar
             // 
@@ -79,19 +89,30 @@ namespace ListaAtividades
             buttonCriar.TabIndex = 4;
             buttonCriar.Text = "Criar";
             buttonCriar.UseVisualStyleBackColor = true;
+            buttonCriar.Click += buttonCriar_Click;
+            // 
+            // labelErro
+            // 
+            labelErro.AutoSize = true;
+            labelErro.Location = new Point(12, 426);
+            labelErro.Name = "labelErro";
+            labelErro.Size = new Size(38, 15);
+            labelErro.TabIndex = 5;
+            labelErro.Text = "label1";
             // 
             // ListaDeAtividades
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(597, 450);
+            Controls.Add(labelErro);
             Controls.Add(buttonCriar);
             Controls.Add(buttonAtulizar);
             Controls.Add(dataGridViewAtividades);
             Controls.Add(buttonFinalizar);
             Controls.Add(textBoxAtividadeEmAndamento);
             Name = "ListaDeAtividades";
-            Text = "Form1";
+            Text = "ListaDeAtividades";
             Load += ListaDeAtividades_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewAtividades).EndInit();
             ResumeLayout(false);
@@ -107,5 +128,6 @@ namespace ListaAtividades
         private DataGridView dataGridViewAtividades;
         private Button buttonAtulizar;
         private Button buttonCriar;
+        private Label labelErro;
     }
 }

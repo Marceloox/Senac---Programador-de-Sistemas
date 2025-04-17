@@ -33,3 +33,4 @@ D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\ListaAtividades\obj\D
 D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\ListaAtividades\obj\Debug\net8.0-windows\ListaAtividades.pdb
 D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\ListaAtividades\obj\Debug\net8.0-windows\ListaAtividades.genruntimeconfig.cache
 D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\ListaAtividades\obj\Debug\net8.0-windows\ref\ListaAtividades.dll
+D:\Programador-de-Sistemas\Senac---Programador-de-Sistemas\ListaAtividades\obj\Debug\net8.0-windows\ListaAtividades.CriarAtividade.resources
