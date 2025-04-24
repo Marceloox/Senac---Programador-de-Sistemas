@@ -8,5 +8,6 @@ namespace Grupo_Produto.Dominio
 {
     internal class Produto
     {
+
     }
 }
