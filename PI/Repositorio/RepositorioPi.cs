@@ -41,38 +41,36 @@ namespace PI.Repositorio
             }
         }
 
-        public List<Pedido> ListarPedidoPendentes()
+        public Pedido BuscarPedidoPendente()
         {
-            List<Pedido> pedidos = [];
-
             using (var con = Database.GetConnection())
             {
                 con.Open();
 
-                string query = $"SELECT * FROM pedido WHERE estado = {(bool)Estado.Pendente};";
+                string query = $"SELECT * FROM atividade WHERE situacao = {(bool)Estado.Realizando};";
 
                 using (var cmd = new MySqlCommand(query, con))
                 {
                     using (var reader = cmd.ExecuteReader())
                     {
-                        while (reader.Read())
+                        if (reader.Read())
                         {
-                            pedidos.Add(new Pedido()
+                            return new Pedido()
                             {
                                 Id = reader.GetInt32("id"),
-                                DataDoPedido = reader.GetString("estado"),
+                                dataDoPedido = reader.GetString("dataDoPedido"),
                                 Estado = (Estado)reader.GetBoolean("estado"),
                                 Id_cliente = reader.GetInt32("id_cliente")
-                            });
+                            };
                         }
                     }
                 }
             }
 
-            return pedidos;
+            return new Pedido();
         }
 
-        public void AtualizarPedido(int id, bool novaSituacao)
+        public void AtualizarPedido(int id, bool novoEstado)
         {
             using (var con = Database.GetConnection())
             {
@@ -82,8 +80,25 @@ namespace PI.Repositorio
 
                 using (var cmd = new MySqlCommand(query, con))
                 {
-                    cmd.Parameters.AddWithValue("@ped.estado", novaSituacao);
+                    cmd.Parameters.AddWithValue("@ped.estado", novoEstado);
                     cmd.Parameters.AddWithValue("@ped.id", id);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void CancelarPedido(string NovoPedido)
+        {
+            using (var con = Database.GetConnection())
+            {
+                con.Open();
+
+                string query = $"DELETE FROM pedido p WHERE p.estado = Vencido";
+
+                using (var cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("id", NovoPedido.id);
+                    cmd.Parameters.AddWithValue("estado", NovoPedido.estado);
                     cmd.ExecuteNonQuery();
                 }
             }
