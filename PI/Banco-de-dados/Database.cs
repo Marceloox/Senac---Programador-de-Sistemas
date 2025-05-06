@@ -3,7 +3,7 @@
 
 namespace PI
 {
-    internal class Database
+    internal class DataBase
     {
         private static readonly string ConnectionString = "datasource=localhost;username=root;password=;database=senac_pi;";
 

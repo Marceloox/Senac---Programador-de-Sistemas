@@ -1,4 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
+using System.Data;
 
 
 namespace PI.Repositorio
@@ -7,7 +9,7 @@ namespace PI.Repositorio
     {
        public void InserirCliente(string NovoCliente)
         {
-            using (var con = Database.GetConnection())
+            using (var con = DataBase.GetConnection())
             {
                 con.Open();
 
@@ -23,9 +25,32 @@ namespace PI.Repositorio
             }
         }
 
+        public List<Cliente> ListarClientes()
+        {
+            var clientes = new List<Cliente>();
+
+            using (var conn = DataBase.GetConnection())
+            {
+                conn.Open();
+
+                string query = "SELECT * FROM cliente";
+
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("id", Cliente.Id);
+                    cmd.Parameters.AddWithValue("nome", Cliente.Nome);
+                    cmd.Parameters.AddWithValue("email", Cliente.Email);
+                    cmd.Parameters.AddWithValue("Telefone", Cliente.Telefone);
+                    cmd.Parameters.AddWithValue("CPF", Cliente.CPF);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            return clientes;
+        }
+
         public void InserirPedido(string NovoPedido)
         {
-            using (var con = Database.GetConnection())
+            using (var con = DataBase.GetConnection())
             {
                 con.Open();
 
@@ -43,7 +68,7 @@ namespace PI.Repositorio
 
         public Pedido BuscarPedidoPendente()
         {
-            using (var con = Database.GetConnection())
+            using (var con = DataBase.GetConnection())
             {
                 con.Open();
 
@@ -72,7 +97,7 @@ namespace PI.Repositorio
 
         public void AtualizarPedido(int id, bool novoEstado)
         {
-            using (var con = Database.GetConnection())
+            using (var con = DataBase.GetConnection())
             {
                 con.Open();
 
@@ -89,11 +114,11 @@ namespace PI.Repositorio
 
         public void CancelarPedido(string NovoPedido)
         {
-            using (var con = Database.GetConnection())
+            using (var con = DataBase.GetConnection())
             {
                 con.Open();
 
-                string query = $"DELETE FROM pedido p WHERE p.estado = Vencido";
+                string query = $"DELETE FROM pedido WHERE estado = Vencido";
 
                 using (var cmd = new MySqlCommand(query, con))
                 {
